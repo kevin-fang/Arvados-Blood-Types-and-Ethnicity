@@ -1,0 +1,1 @@
+/home/kfang/Desktop/AnalyzeBloodByRace/AnalyzeByBloodTypePGP.py
