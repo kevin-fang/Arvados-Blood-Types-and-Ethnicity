@@ -8,7 +8,7 @@ It's not included in this repository. Just request a copy of BOOGIE from here: h
 
 ### How to run
 
-To convert a gff file into a BOOGIE file, either navigate to `fullcode\` 
+To convert a gff file into a BOOGIE file, navigate to `fullcode\` 
 
 To directly convert a gzipped gff file to BOOGIE, navigate to  `fullcodefromgz\`
 
@@ -20,7 +20,8 @@ Then move the output to the directory that contains BOOGIE, and run BOOGIE on it
 
 All of this code is available for use in Arvados the following pipeline: http://curover.se/su92l-j7d0g-jd1fzgbhl3nfz3c
 
-### Misc.
+### Miscellaneous information:
 
 The Dockerfile contained in this directory is a simple installation of Linux that contains Java, and installs the necessary scripts for Arvados to be able to use the docker image. It downloads the Boogie Translator, compiles the Java files, and cleans up after itself.
 
+The misc. folder and comparison folder contain old files used in the creation of the translator.
