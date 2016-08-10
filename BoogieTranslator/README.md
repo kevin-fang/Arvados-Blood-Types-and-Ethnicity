@@ -8,7 +8,11 @@ It's not included in this repository. Just request a copy of BOOGIE from here: h
 
 ### How to run
 
-To convert a gff file into a BOOGIE file, either navigate to fullcode or fullcodefromgz (if you want to translate directly from .gz to BOOGIE for space reasons) and run: 
+To convert a gff file into a BOOGIE file, either navigate to `fullcode\` 
+
+To directly convert a gzipped gff file to BOOGIE, navigate to  `fullcodefromgz\`
+
+Run the following command: 
 
 `java BOOGIEFormat (gz/gff filename) > (desired output filename)`
 
