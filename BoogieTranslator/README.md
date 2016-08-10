@@ -15,3 +15,8 @@ To convert a gff file into a BOOGIE file, either navigate to fullcode or fullcod
 Then move the output to the directory that contains BOOGIE, and run BOOGIE on it.
 
 All of this code is available for use in Arvados the following pipeline: http://curover.se/su92l-j7d0g-jd1fzgbhl3nfz3c
+
+### Misc.
+
+The Dockerfile contained in this directory is a simple installation of Linux that contains Java, and installs the necessary scripts for Arvados to be able to use the docker image. It downloads the Boogie Translator, compiles the Java files, and cleans up after itself.
+
