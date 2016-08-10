@@ -24,4 +24,4 @@ All of this code is available for use in Arvados the following pipeline: http://
 
 The Dockerfile contained in this directory is a simple installation of Linux that contains Java, and installs the necessary scripts for Arvados to be able to use the docker image. It downloads the Boogie Translator, compiles the Java files, and cleans up after itself.
 
-The misc. folder and comparison folder contain old files used in the creation of the translator.
+The misc. folder contains old files used in the creation of the translator.
