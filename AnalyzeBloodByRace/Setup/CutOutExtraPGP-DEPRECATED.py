@@ -1,5 +1,8 @@
 import os
 
+// CODE IS NO LONGER NEEDED - ParseBoogie NO LONGER ADDS "Blood type is"
+
+
 for filename in os.listdir("."):
     if filename.startswith("hu"):
         txt = open(filename, "r")

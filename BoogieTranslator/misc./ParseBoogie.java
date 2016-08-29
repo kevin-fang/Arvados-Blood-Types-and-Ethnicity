@@ -65,7 +65,6 @@ public class ParseBoogie
 	}
 
 	public static String mostCommonOccurence(String[] readList) {
-		int maxCounts = 0;
 		int aCounts;
 		int bCounts;
 		int oCounts;
