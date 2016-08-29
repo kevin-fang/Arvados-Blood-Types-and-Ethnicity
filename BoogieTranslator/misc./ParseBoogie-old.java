@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class ParseBoogieCorrect
+public class ParseBoogie
 {
 	public static void main(String[] args) throws IOException {
 		File io = new File(args[0]);
@@ -18,23 +18,7 @@ public class ParseBoogieCorrect
 		while (sc.hasNextLine()) {
 			try {
 				if (compare.substring(0, 9).equals("Chromatid")) {
-					String[] nextChromatids = new String[2];
-					
-					// goes two at a time
-					nextChromatids[0] = mostCommonOccurence(returnTypes(removeExtra(compare)));
-					compare = sc.nextLine();
-					nextChromatids[1] = mostCommonOccurence(returnTypes(removeExtra(compare)));
-					String guess = nextChromatids[0] + nextChromatids[1];
-					if (guess.contains("AB") || guess.contains("BA")) {
-						guesses.add("AB");
-					} else if (guess.contains("A")) {
-						guesses.add("A");
-					} else if (guess.contains("B")) {
-						guesses.add("B");
-					} else {
-						guesses.add("O");
-					}
-					//System.out.println(guesses);
+					guesses.add(mostCommonOccurence(returnTypes(removeExtra(compare))));
 				}
 				compare = sc.nextLine();
 			} catch (StringIndexOutOfBoundsException e) {
@@ -44,34 +28,27 @@ public class ParseBoogieCorrect
 
 		int aCount = 0;
 		int bCount = 0;
-		int abCount = 0;
 		int oCount = 0;
 		for (String type : guesses) {
 			if (type.equals("A")) {
 				aCount++;
 			} else if (type.equals("B")) {
 				bCount++;
-			} else if (type.equals("AB")) {
-				abCount++;
 			} else {
 				oCount++;
 			}
 		}
 
 		//System.out.print("Blood type is: ");
-		int maxNum = Collections.max(Arrays.asList(aCount, bCount, abCount, oCount));
-		if (maxNum == abCount) {
-			System.out.println("AB");
-		} else if (maxNum == aCount) {
+		if (aCount > bCount) {
 			System.out.println("A");
-		} else if (maxNum == bCount) {
+		} else if (bCount > aCount) {
 			System.out.println("B");
-		} else if (maxNum == oCount) {
+		} else if (aCount == bCount && aCount != 0) {
+			System.out.println("AB");
+		} else {
 			System.out.println("O");
-		} else if (aCount == bCount) { // this case should not occur
-			throw new IOException();
-		} 
-			
+		}
 	}
 
 	private static String removeExtra(String toParse) {
