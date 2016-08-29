@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class ParseBoogieCorrect
+public class ParseBoogie
 {
 	public static void main(String[] args) throws IOException {
 		File io = new File(args[0]);
