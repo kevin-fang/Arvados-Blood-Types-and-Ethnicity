@@ -4,8 +4,9 @@ import java.lang.String;
 import java.util.HashMap;
 import java.util.Arrays;
 
-public class FormatForBOOGIECSV
+public class FormatForBOOGIETSV
 {
+	// format a full varfile for use in BOOGIE. Does not use off bases, therefore is much shorter.
 	public static void main(String[] args) throws IOException {
 		File f = new File(args[0]);
 		Scanner sc = new Scanner(f);

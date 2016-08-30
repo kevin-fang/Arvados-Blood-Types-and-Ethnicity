@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+// Parse the data from BOOGIE, taking into account each guess and choosing the most common guess.
+
 public class ParseBoogie
 {
 	public static void main(String[] args) throws IOException {
 		File io = new File(args[0]);
 		Scanner sc = new Scanner(io);
+		// search through the guesses while adding them to the ArrayList
 		ArrayList<String> guesses = new ArrayList<String>();
-
 		String compare = sc.nextLine();
 
 		while (sc.hasNextLine()) {
@@ -20,11 +22,13 @@ public class ParseBoogie
 				if (compare.substring(0, 9).equals("Chromatid")) {
 					String[] nextChromatids = new String[2];
 					
-					// goes two at a time
+					// goes two at a time because usually each chromatid has a different guess.
 					nextChromatids[0] = mostCommonOccurence(returnTypes(removeExtra(compare)));
 					compare = sc.nextLine();
 					nextChromatids[1] = mostCommonOccurence(returnTypes(removeExtra(compare)));
 					String guess = nextChromatids[0] + nextChromatids[1];
+
+					// add to guesses ArrayList, taking into account codominancy
 					if (guess.contains("AB") || guess.contains("BA")) {
 						guesses.add("AB");
 					} else if (guess.contains("A")) {
@@ -37,11 +41,12 @@ public class ParseBoogie
 					//System.out.println(guesses);
 				}
 				compare = sc.nextLine();
-			} catch (StringIndexOutOfBoundsException e) {
+			} catch (StringIndexOutOfBoundsException e) { // if string does not contain 9 characters for searching blood types.
 				compare = sc.nextLine();
 			}
 		}
 
+		// after looking through text, assign most common blood type and print it out 
 		int aCount = 0;
 		int bCount = 0;
 		int abCount = 0;
@@ -74,10 +79,12 @@ public class ParseBoogie
 			
 	}
 
+	// remove extra text not pertaining to blood type
 	private static String removeExtra(String toParse) {
 		return toParse.substring(18, toParse.length() - 1);
 	}
 
+	// return string array containing the two guesses
 	private static String[] returnTypes(String line) {
 		String[] types = line.split(" or ");
 		for (int i = 0; i < types.length; i++) {
@@ -87,6 +94,7 @@ public class ParseBoogie
 		return types;
 	}
 
+	// return the most common blood type
 	public static String mostCommonOccurence(String[] readList) {
 		int aCounts;
 		int bCounts;

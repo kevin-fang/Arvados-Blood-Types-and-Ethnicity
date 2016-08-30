@@ -2,6 +2,8 @@ import java.io.*;
 import java.lang.String;
 import java.util.Scanner;
 
+// tool: searches for each instance of a string and prints out the line along with its execution time - used for testing BOOGIE Formatter
+
 public class FindLine
 {
 	public static void main(String[] args) throws IOException {

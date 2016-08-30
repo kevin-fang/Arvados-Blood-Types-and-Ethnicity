@@ -2,7 +2,7 @@ FROM java:8
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    echo Updated && \
+    echo Update && \ 
     apt-get install libcurl4-openssl-dev -y && \
     apt-get install libssl-dev -y && \
     apt-get install python-pip python-dev build-essential -y && \
@@ -11,6 +11,6 @@ RUN apt-get update && \
     python2.7 -m pip install arvados-python-client && \
     wget "https://github.com/kfang1233/Using-Arvados-to-Analyze-Blood-Types-and-Race/raw/master/BoogieTranslator/BOOGIERun.tar" && \
     tar -xvf BOOGIERun.tar && \
-    javac BOOGIEFormat.java && rm BOOGIEFormat.java && javac ParseBoogie.java && rm ParseBoogie.java
+    cd BOOGIERun && javac BOOGIEFormat.java && rm BOOGIEFormat.java && javac ParseBoogie.java && rm ParseBoogie.java
 
 RUN rm BOOGIERun.tar

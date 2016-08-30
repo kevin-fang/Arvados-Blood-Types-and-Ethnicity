@@ -53,7 +53,7 @@ public class BOOGIEFormat
 					}
 				}
 				
-				// assign coord1 & coord2, fix because of off bases
+				// assign coord1 & coord2, fix off bases
 				int coord1Loc = new Integer(dataTemp[2]);
 				coord1Loc -= 1;
 				data.put("coord1", Integer.toString(coord1Loc));
