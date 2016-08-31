@@ -4,10 +4,12 @@ hints:
  DockerRequirement:
   dockerPull: kfang/boogienew
 stdout: "output.txt"
-baseCommand: ["java", "BOOGIERun/BOOGIEFormat"]
+baseCommand: ["java", "-cp",  "/BOOGIERun/", "BOOGIEFormat"]
 inputs:
  gz-file:
   type: File
+  inputBinding:
+   position: 1
 outputs:
  boogie-file:
   type: File
