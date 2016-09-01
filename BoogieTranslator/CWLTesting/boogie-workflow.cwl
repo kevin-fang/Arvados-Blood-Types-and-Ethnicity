@@ -2,21 +2,31 @@ cwlVersion: v1.0
 class: Workflow
 requirements:
  InlineJavascriptRequirement: {}
+ DockerRequirement:
+  dockerPull: kfang/boogienew
 
 inputs:
- inp: File
- ex: File
+ gz_file:
+  type: File
 
 outputs:
- classout:
+ parsed_file:
   type: File
-  outputSource: parse-results/parsed.txt
+  outputSource: parse/parsed_file
 
 steps:
  format:
   run: translate.cwl
   in:
-   gz-file: inp
-   extractfile: ex
-  out: [boogie_out]
-
+   gz_file: gz_file
+  out: [boogie_file]
+ boogie:
+  run: run-boogie.cwl
+  in:
+   boogie_file: format/boogie_file
+  out: [results_file]
+ parse:
+  run: parse-results.cwl
+  in:
+   results_file: boogie/results_file
+  out: [parsed_file]
