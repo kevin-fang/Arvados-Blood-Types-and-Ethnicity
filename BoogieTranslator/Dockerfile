@@ -1,8 +1,8 @@
 FROM java:8
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    echo Update && \ 
+    apt-get upgrade -y && \ 
+    echo finished updating && \
     apt-get install libcurl4-openssl-dev -y && \
     apt-get install libssl-dev -y && \
     apt-get install python-pip python-dev build-essential -y && \
