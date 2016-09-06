@@ -6,7 +6,7 @@ Make sure you have virtualenv and arvados-cwl-runner installed, as well as the D
 
 1. Activate the virtualenv by running `source ~/venv/bin/activate`
 
-2. Run `arvados-cwl-runner boogie-workflow.cwl --gz_file <genome.gz>`
+2. Run `arvados-cwl-runner --local boogie-workflow.cwl --gz_file <genome.gz>`
 
 3. The results will be in an Arvados collection viewable online and will be the "output of parse-results.cwl"
 
