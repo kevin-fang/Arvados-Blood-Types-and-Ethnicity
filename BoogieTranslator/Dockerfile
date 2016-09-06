@@ -8,6 +8,7 @@ RUN apt-get update && \
     apt-get install python-pip python-dev build-essential -y && \
     pip install --upgrade pip && \
     pip install --upgrade virtualenv && \
+    python2.7 -m pip install arvados-cwl-runner && \
     python2.7 -m pip install arvados-python-client && \
     echo Finished installing Python Arvados API - now downloading BOOGIE Docker file && \
     wget "https://github.com/kfang1233/Using-Arvados-to-Analyze-Blood-Types-and-Race/raw/master/BoogieTranslator/BOOGIERun.tar" && \
