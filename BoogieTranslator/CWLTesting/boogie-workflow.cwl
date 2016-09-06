@@ -3,7 +3,7 @@ class: Workflow
 requirements:
  InlineJavascriptRequirement: {}
  DockerRequirement:
-  dockerPull: kfang/boogienew
+  dockerPull: kfang/boogie
 
 inputs:
  gz_file:
