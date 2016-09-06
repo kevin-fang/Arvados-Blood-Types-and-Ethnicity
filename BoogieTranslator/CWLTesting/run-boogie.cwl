@@ -4,7 +4,7 @@ requirements:
  InlineJavascriptRequirement: {}
 hints:
  DockerRequirement:
-  dockerPull: kfang/boogienew
+  dockerPull: kfang/boogie
 stdout: $(inputs.boogie_file.nameroot + '.res')
 baseCommand: ["java", "-jar", "/BOOGIERun/BOOGIE.jar", "/BOOGIERun/bloodGroups/ABO.csvb"]
 inputs:

@@ -4,7 +4,7 @@ requirements:
  InlineJavascriptRequirement: {}
 hints:
  DockerRequirement:
-  dockerPull: kfang/boogienew
+  dockerPull: kfang/boogie
 stdout: $(inputs.results_file.nameroot + '.parsed')
 baseCommand: ["java", "-cp",  "/BOOGIERun/", "ParseBoogie"]
 inputs:

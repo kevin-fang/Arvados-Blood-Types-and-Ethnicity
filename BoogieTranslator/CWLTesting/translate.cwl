@@ -4,7 +4,7 @@ requirements:
  InlineJavascriptRequirement: {}
 hints:
  DockerRequirement:
-  dockerPull: kfang/boogienew
+  dockerPull: kfang/boogie
 stdout: $(inputs.gz_file.nameroot + '.bg')
 baseCommand: ["java", "-cp",  "/BOOGIERun/", "BOOGIEFormat"]
 inputs:
