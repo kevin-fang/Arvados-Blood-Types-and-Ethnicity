@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# This application compares the blood types found through the GFF and the blood types found through the PGP website.
-
+# This script reads all the blood types from the 173-HarvardPGP folder and all the ethnicities from CSVFiles/phenotypes-race.csv and prints a formatted table to the standard output.
+# This also collects blood types from phenotypes-race.csv and only use BOOGIE's guess as a failsafe.
 import os
 import csv
 

@@ -8,13 +8,13 @@ Not included in this repository. Request a copy of BOOGIE from here: http://prot
 
 Note that you cannot build the Docker image without the copy of BOOGIE. BOOGIEFormat.tar only contains BOOGIE. It looks like this:
 
-`.`  
+`BOOGIERun.tar`  
 `|── BOOGIERun`  
 `|   ├── BOOGIE.jar`  
 `|   ├── bloodGroups`  
-`|   |   ├── ABO.csvb`  
+`|   |   ├── ABO.csvb`
 
-In the Dockerfile, replace `wget --output-document=BOOGIERun.tar "<Direct download link to BOOGIE online" && \
+In the Dockerfile, replace `wget --output-document=BOOGIERun.tar "<direct download link to BOOGIE online>" && \
 ` with a direct download link to BOOGIE. In addition, the Dockerfile uses the java:8 image, so run `docker pull java:8`. The Docker image can be build by first navigating to the directory containing the Dockerfile and running the following command:  
  `docker build -t kfang/boogie .`
 

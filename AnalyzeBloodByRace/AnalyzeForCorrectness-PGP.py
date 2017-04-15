@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# This application compares the blood types found through the GFF and the blood types found through the PGP website. To use, drop in the genomes folder and type "python
+# Reads from CSVFiles/phenotypes-basic2015.csv and the BOOGIE guesses and prints the percentage of correct guesses.
 
 import os
 import csv
@@ -12,7 +12,6 @@ def searchCSV(name):
 	with open("./CSVFiles/phenotypes-basic2015.csv") as csvFile:
 		reader = csv.DictReader(csvFile)
 		for row in reader:
-			#print row["Participant"] + " " + row["1.1 \xe2\x80\x94 Blood Type"]
 			if row["Participant"] == name:
 				try:
 					bloodType = row["Blood Type"][0]
@@ -38,8 +37,8 @@ for filename in os.listdir(pgpDirectory):
 			personBlood = person.read().rstrip()
 			if (csvSearch == personBlood):
 				correct += 1
-			else: wrong += 1
-        		#print ("csv: " + csvSearch + " " + "person: " + personBlood)
+			else:
+				wrong += 1
 
 print "################################"
 print "#           RESULTS            #"

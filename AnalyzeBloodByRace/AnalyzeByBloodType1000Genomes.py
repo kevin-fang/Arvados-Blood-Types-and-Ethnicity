@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# This application compares the blood types found through the GFF and the blood types found through the PGP website.
+# This script reads all the blood types from the 433-1000Genomes folder and all the ethnicities from CSVFiles/1000genomesethnicities.csv and prints a formatted table to the standard output.
 
 import os
 import csv
