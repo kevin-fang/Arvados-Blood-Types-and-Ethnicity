@@ -9,13 +9,13 @@ import csv
 # search CSV file for name and return blood type for respective name
 def searchCSV(name):
 	# replace open(...) with open(location of blood csv)
-	with open("phenotypes-basic2015.csv") as csvFile:
+	with open("./CSVFiles/phenotypes-basic2015.csv") as csvFile:
 		reader = csv.DictReader(csvFile)
 		for row in reader:
 			#print row["Participant"] + " " + row["1.1 \xe2\x80\x94 Blood Type"]
 			if row["Participant"] == name:
 				try:
-					bloodType = row["1.1 \xe2\x80\x94 Blood Type"][0]
+					bloodType = row["Blood Type"][0]
 					if (bloodType != "D"):
 						csvFile.close()
 						return bloodType
@@ -29,9 +29,10 @@ correct = 0.00
 wrong = 0.00
 
 #for every person found, search in PGP and compare
-for filename in os.listdir("/173-HarvardPGP"):
+pgpDirectory = "./173-HarvardPGP/"
+for filename in os.listdir(pgpDirectory):
 	if filename.startswith("hu"):
-		person = open(filename)
+		person = open(pgpDirectory + filename)
 		csvSearch = searchCSV(filename)
 		if csvSearch != None:
 			personBlood = person.read().rstrip()

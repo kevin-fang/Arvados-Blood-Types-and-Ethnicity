@@ -23,7 +23,7 @@ class BloodStorage:
 
 # search CSV file for name and return blood type for respective name
 def searchCSVForRace(name):
-	with open("phenotypes-race.csv") as csvFile:
+	with open("./CSVFiles/phenotypes-race.csv") as csvFile:
 		reader = csv.DictReader(csvFile)
 		for row in reader:
 			if row["Participant"] == name:
@@ -35,7 +35,7 @@ def searchCSVForRace(name):
 	return "None"
 
 def searchCSVForBlood(name):
-	with open("phenotypes-basic2015.csv") as csvFile:
+	with open("./CSVFiles/phenotypes-basic2015.csv") as csvFile:
 		reader = csv.DictReader(csvFile)
 		for row in reader:
 			#print row

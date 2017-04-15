@@ -1,3 +1,6 @@
+# Kevin Fang, 2016
+# Strips extra title information from filename; works for both PGP and 1000 Genomes
+
 import os
 
 # loop through every file in the directory and rename if needed
