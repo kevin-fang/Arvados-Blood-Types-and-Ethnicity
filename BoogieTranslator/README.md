@@ -4,7 +4,7 @@ Code to translate GFF files into a format that can be read by BOOGIE, a program 
 
 ## Where's BOOGIE?
 
-Not included in this repository. Request a copy of BOOGIE from here: http://protein.bio.unipd.it/download/ and copy all the files to this directory
+Not included in this repository. Request a copy of BOOGIE from here: http://protein.bio.unipd.it/download/, build a tar and change the Dockerfile `wget` location to the location of your BOOGIE tar.
 
 Note that you cannot build the Docker image without the copy of BOOGIE. BOOGIEFormat.tar literally only contains BOOGIE. It looks like this:
 
