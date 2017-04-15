@@ -8,6 +8,7 @@ Clone this project with `git clone https://github.com/kevin-fang/Arvados-Blood-T
 Copy the output results from Arvados if you have your own dataset, or use the ones provided. If you use the ones provided, you can skip the next step.  
 Copy `StripExtraTitleInfo.py` to the directory containing the raw Arvados data and run `python StripExtraTitleInfo.py`.  
 
+`StripExtraTitleInfo.py` renames the output from the long name from the pipeline such as to just the name of the user's genome. For example, it would rename  "hu123456.gffBloodTypeparsed.txt" to "hu123456." It is needed to cut out extra text from the file name and needs to be run before running the analysis scripts. Works for both 173 PGP genome files and the 433 1000 Genomes Project genome files. This allows the Python program to assume the identifier of the person on the CSV file is the same as the filename.  
 To get a simple percent of accuracy from the Harvard PGP data, run `python AnalyzeForCorrectness-PGP.py`
 
 To create formatted tables from your raw data, read the following:
