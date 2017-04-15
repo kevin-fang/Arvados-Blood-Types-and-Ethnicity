@@ -1,7 +1,7 @@
 FROM java:8
 
 RUN apt-get update && \
-    apt-get upgrade -y && \ 
+    apt-get upgrade -y && \
     echo Finished updating! Now installing Python Arvados API && \
     apt-get install libcurl4-openssl-dev -y && \
     apt-get install libssl-dev -y && \
@@ -13,6 +13,9 @@ RUN apt-get update && \
     echo Finished installing Python Arvados API - now downloading BOOGIE Docker file && \
     wget "https://github.com/kevin-fang/Arvados-Blood-Types-and-Race/raw/master/BoogieTranslator/BOOGIERun.tar" && \
     tar -xvf BOOGIERun.tar && \
-    cd BOOGIERun && javac BOOGIEFormat.java && rm BOOGIEFormat.java && javac ParseBoogie.java && rm ParseBoogie.java
+    cd BOOGIERun && \
+    wget "https://raw.githubusercontent.com/kevin-fang/Arvados-Blood-Types-and-Race/master/BoogieTranslator/ParseBoogie.java" && \
+    wget "https://raw.githubusercontent.com/kevin-fang/Arvados-Blood-Types-and-Race/master/BoogieTranslator/BOOGIE%20Format%20from%20GZ/BOOGIEFormat.java" && \
+    javac BOOGIEFormat.java && rm BOOGIEFormat.java && javac ParseBoogie.java && rm ParseBoogie.java
 
 RUN rm BOOGIERun.tar
