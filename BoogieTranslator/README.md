@@ -6,7 +6,7 @@ Code to translate GFF files into a format that can be read by BOOGIE, a program 
 
 Not included in this repository. Request a copy of BOOGIE from here: http://protein.bio.unipd.it/download/, build a tar and change the Dockerfile `wget` location to the location of your BOOGIE tar.
 
-Note that you cannot build the Docker image without the copy of BOOGIE. BOOGIEFormat.tar literally only contains BOOGIE. It looks like this:
+Note that you cannot build the Docker image without the copy of BOOGIE. BOOGIEFormat.tar only contains BOOGIE. It looks like this:
 
 `.`  
 `|── BOOGIERun`  
@@ -14,6 +14,9 @@ Note that you cannot build the Docker image without the copy of BOOGIE. BOOGIEFo
 `|   ├── bloodGroups`  
 `|   |   ├── ABO.csvb`  
 
+In the Dockerfile, replace `wget --output-document=BOOGIERun.tar "<Direct download link to BOOGIE online" && \
+` with a direct download link to BOOGIE. In addition, the Dockerfile uses the java:8 image, so run `docker pull java:8`. The Docker image can be build by first navigating to the directory containing the Dockerfile and running the following command:  
+ `docker build -t kfang/boogie .`
 
 ### How to run
 
