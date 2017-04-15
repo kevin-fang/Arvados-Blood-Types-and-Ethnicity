@@ -1,1 +1,0 @@
-/home/kfang/Desktop/AnalyzeBloodByRace/Setup/CutOutExtra1000.py

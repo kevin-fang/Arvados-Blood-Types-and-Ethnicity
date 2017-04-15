@@ -9,9 +9,8 @@ Clone this to a directory and navigate there first
 
 ### For 173 Genomes from Harvard PGP:
 
-Navigate to /173-HarvardPGP and type `python AnalyzeByBloodTypePGP.py` and it should analyze and print out the results
+Run `python AnalyzeByBloodTypePGP.py` and it should analyze and print out the results
 
 ### For 433 Genomes from the 1000 Genomes Project:
 
 Navigate to /433-1000Genomes and type `python AnalyzeByBloodType1000Genomes.py` and it'll run on the genomes in that folder
-

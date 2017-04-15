@@ -1,1 +1,0 @@
-/home/kfang/Desktop/AnalyzeBloodByRace/AnalyzeByBloodType1000Genomes.py

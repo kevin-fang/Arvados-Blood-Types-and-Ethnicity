@@ -12,18 +12,18 @@ class BloodStorage:
 		self.bloodTypes = [0, 0, 0, 0]
 	def __str__(self):
 		return "" + str(self.bloodTypes[0]) + "\t" + str(self.bloodTypes[1]) + "\t" + str(self.bloodTypes[2]) + "\t" + str(self.bloodTypes[3])
-	def incrementA(self): 
+	def incrementA(self):
 		self.bloodTypes[0] += 1;
-	def incrementB(self): 
+	def incrementB(self):
 		self.bloodTypes[1] += 1;
-	def incrementAB(self): 	
+	def incrementAB(self):
 		self.bloodTypes[2] += 1;
-	def incrementO(self): 
+	def incrementO(self):
 		self.bloodTypes[3] += 1;
 
 # search CSV file for name and return blood type for respective name
 def searchCSVForRace(name):
-	with open("../1000genomesethnicities.csv") as csvFile:
+	with open("1000genomesethnicities.csv") as csvFile:
 		reader = csv.DictReader(csvFile)
 		for row in reader:
 			if row["Sample"] == name:
@@ -32,7 +32,7 @@ def searchCSVForRace(name):
 					if race != "No response" and race != "":
 						csvFile.close()
 						return race
-				except: 
+				except:
 					csvFile.close()
 					return None
 	csvFile.close()
@@ -40,36 +40,34 @@ def searchCSVForRace(name):
 
 # dictionary containing the race and associated blood type data
 raceDict = {}
-count = 0
 #for every person found, search in PGP and compare
-for filename in os.listdir("."):
+genomesProjectDirectory = "./433-1000Genomes/"
+
+for filename in os.listdir(genomesProjectDirectory):
 	if filename.startswith("HG") or filename.startswith("NA"):
-		person = open(filename)
+		person = open(genomesProjectDirectory + filename)
 		race = searchCSVForRace(filename) # this is the race of the person
-		blood = person.read()
-		if race != None and blood != None:
-			count += 1
+		blood = person.read().rstrip()
+		if blood != None and race != None and race != "None":
+			#print repr(blood)
 			try:
-				if blood == "A\n":
+				if blood == "A":
 					raceDict[race].incrementA()
-				elif blood == "B\n": 
+				elif blood == "B":
 					raceDict[race].incrementB()
-				elif blood == "O\n": 
+				elif blood == "O":
 					raceDict[race].incrementO()
-				elif blood == "AB\n": 
+				elif blood == "AB":
 					raceDict[race].incrementAB()
 			except:
 				raceDict[race] = BloodStorage()
-				if blood == "A\n":
+				if blood == "A":
 					raceDict[race].incrementA()
-				elif blood == "B\n": 
+				elif blood == "B":
 					raceDict[race].incrementB()
-				elif blood == "O\n": 
+				elif blood == "O":
 					raceDict[race].incrementO()
-				elif blood == "AB\n": 
+				elif blood == "AB":
 					raceDict[race].incrementAB()
-
 for race in raceDict:
-	print race + ":\t" + str(raceDict[race])
-
-print count
+	print race + ":\n" + str(raceDict[race])
