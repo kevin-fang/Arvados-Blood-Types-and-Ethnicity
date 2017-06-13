@@ -10,8 +10,9 @@ RUN apt-get update && \
     pip install --upgrade virtualenv && \
     python2.7 -m pip install arvados-cwl-runner && \
     python2.7 -m pip install arvados-python-client && \
-    echo Finished installing Python Arvados API - now downloading BOOGIE Docker file && \
-    wget --output-document=BOOGIERun.tar "https://github.com/kevin-fang/Arvados-Blood-Types-and-Race/raw/master/BoogieTranslator/BOOGIERun.tar" && \
+    echo "\e[32mFinished installing Python Arvados API - now downloading BOOGIE Docker file\e[21m"
+
+RUN wget --output-document=BOOGIERun.tar "https://github.com/kevin-fang/Arvados-Blood-Types-and-Race/raw/master/BoogieTranslator/BOOGIERun.tar" && \
     tar -xvf BOOGIERun.tar && \
     cd BOOGIERun && \
     wget "https://raw.githubusercontent.com/kevin-fang/Arvados-Blood-Types-and-Race/master/BoogieTranslator/ParseBoogie.java" && \
