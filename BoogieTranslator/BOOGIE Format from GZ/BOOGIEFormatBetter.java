@@ -23,12 +23,12 @@ public class BOOGIEFormatBetter
 		while (compare != null) {
 			// makes sure that it's only working with mutations
 			if(!compare.contains("REF")) {
-        String zygosity;
-        String chrNum;
-        String refallele = "-";
-        String coord1;
-        String coord2;
-        String allele;
+				String zygosity;
+				String chrNum;
+				String refallele = "-";
+				String coord1;
+				String coord2;
+				String allele;
 				// delete irrelevant information
 				compare = compare.replaceAll("[.,+,db_xref,dbnsp:]", "");
 				compare = compare.replace("CGI", "");
@@ -39,7 +39,7 @@ public class BOOGIEFormatBetter
 				String[] dataTemp = compare.split(";");
 
 				// assign chromosome number
-        chrNum = dataTemp[0];
+				chrNum = dataTemp[0];
 				// remove irrelevant text from alleles
 				String alleleInfo = dataTemp[4].replace("alll", "");
 				// assign zygosity
@@ -52,7 +52,7 @@ public class BOOGIEFormatBetter
 				// assign refallele
 				for (int i = 4; i < dataTemp.length; i++) {
 					if (dataTemp[i].contains("alll")) {
-              refallele = dataTemp[i].replace("alll", "");
+						refallele = dataTemp[i].replace("alll", "");
 					}
 				}
 
@@ -62,10 +62,10 @@ public class BOOGIEFormatBetter
 				coord1 = Integer.toString(coord1Loc);
 				int coord2Loc = new Integer(dataTemp[3]);
 				coord2Loc -= 1;
-        coord2 = Integer.toString(coord2Loc);
+				coord2 = Integer.toString(coord2Loc);
 
 				if (coord2Loc < coord1Loc) {
-          coord2 = Integer.toString(coord1Loc);
+					coord2 = Integer.toString(coord1Loc);
 				}
 
 				// assign allele and print out info, filter out homozygous in the process
