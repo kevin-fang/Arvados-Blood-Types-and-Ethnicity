@@ -9,7 +9,6 @@ public class BOOGIEFormat
 
 		GZIPInputStream gzip = new GZIPInputStream(new FileInputStream(args[0]));
 		BufferedReader br = new BufferedReader(new InputStreamReader(gzip));
-		final long startTime = System.currentTimeMillis();
 
 		// format should be: chr# coord1 coord2 nucleotide1 nucleotide2 hom/het in BOOGIE file
 		// preformat is : ch# cgh ref/snp/indel coord1 coord2 . + . alleles g/ref allele
@@ -80,8 +79,6 @@ public class BOOGIEFormat
 			}
 			compare = br.readLine();
 			}
-		final long endTime = System.currentTimeMillis();
 		br.close();
-		System.out.println("Total execution time: " + (endTime - startTime) );
 	}
 }
