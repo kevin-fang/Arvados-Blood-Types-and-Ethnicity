@@ -6,9 +6,10 @@ import java.util.HashMap;
 public class BOOGIEFormat
 {
 	public static void main(String[] args) throws IOException {
+
 		GZIPInputStream gzip = new GZIPInputStream(new FileInputStream(args[0]));
 		BufferedReader br = new BufferedReader(new InputStreamReader(gzip));
-		
+		final long startTime = System.currentTimeMillis();
 
 		// format should be: chr# coord1 coord2 nucleotide1 nucleotide2 hom/het in BOOGIE file
 		// preformat is : ch# cgh ref/snp/indel coord1 coord2 . + . alleles g/ref allele
@@ -50,7 +51,7 @@ public class BOOGIEFormat
 					data.put("refallele", dataTemp[i].replace("alll", ""));
 					}
 				}
-				
+
 				// assign coord1 & coord2, fix off bases
 				int coord1Loc = new Integer(dataTemp[2]);
 				coord1Loc -= 1;
@@ -72,13 +73,15 @@ public class BOOGIEFormat
 				data.put("allele", alleleInfo);
 
 				// create string to print out and remove carriage return
-				String add = (data.get("chr#") + " " + data.get("coord1") + " " + data.get("coord2") + " " 
+				String add = (data.get("chr#") + " " + data.get("coord1") + " " + data.get("coord2") + " "
 					+ data.get("refallele") + " " + data.get("allele") + " " + data.get("zygosity") + "\n");
 				add = add.replaceAll("\\r", "");
 				System.out.print(add);
 			}
 			compare = br.readLine();
 			}
+		final long endTime = System.currentTimeMillis();
 		br.close();
+		System.out.println("Total execution time: " + (endTime - startTime) );
 	}
 }
