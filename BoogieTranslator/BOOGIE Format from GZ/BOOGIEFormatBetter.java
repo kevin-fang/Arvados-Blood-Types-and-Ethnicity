@@ -2,6 +2,7 @@ import java.io.*;
 import java.lang.String;
 import java.util.zip.GZIPInputStream;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class BOOGIEFormatBetter
 {
@@ -21,6 +22,9 @@ public class BOOGIEFormatBetter
 		while(compare.substring(0, 1).equals("#")) {
 			compare = br.readLine();
 		}
+
+		Pattern deleteExtra = Pattern.compile("[.,+,db_xref,dbnsp:]");
+		Pattern deleteWhiteSpace = Pattern.compile("\\s+");
 		while (compare != null) {
 			// makes sure that it's only working with mutations
 			if(!compare.contains("REF")) {
@@ -31,12 +35,12 @@ public class BOOGIEFormatBetter
         String coord2;
         String allele;
 				// delete irrelevant information
-				compare = compare.replaceAll("[.,+,db_xref,dbnsp:]", "");
+				compare = deleteExtra.matcher(compare).replaceAll("");
 				compare = compare.replace("CGI", "");
 				compare = compare.replace("ch", "chr");
 				compare = compare.replace(" ", "");
 				// divide and split sections
-				compare = compare.replaceAll("\\s+", ";");
+				compare = deleteWhiteSpace.matcher(compare).replaceAll(";");
 				String[] dataTemp = compare.split(";");
 
 				// assign chromosome number
