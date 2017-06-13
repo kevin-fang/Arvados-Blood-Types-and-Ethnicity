@@ -2,7 +2,7 @@ FROM java:8
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    echo Finished updating! Now installing Python Arvados API && \
+    echo "Finished updating! Now installing Python Arvados API" && \
     apt-get install libcurl4-openssl-dev -y && \
     apt-get install libssl-dev -y && \
     apt-get install python-pip python-dev build-essential -y && \
@@ -10,7 +10,8 @@ RUN apt-get update && \
     pip install --upgrade virtualenv && \
     python2.7 -m pip install arvados-cwl-runner && \
     python2.7 -m pip install arvados-python-client && \
-    echo -e "\e[32mFinished installing Python Arvados API - now downloading BOOGIE Docker file\e[0m"
+    echo "Finished installing Python Arvados API - now downloading BOOGIE Docker file"
+
 RUN wget --output-document=BOOGIERun.tar "https://github.com/kevin-fang/Arvados-Blood-Types-and-Race/raw/master/BoogieTranslator/BOOGIERun.tar" && \
     tar -xvf BOOGIERun.tar && \
     cd BOOGIERun && \
