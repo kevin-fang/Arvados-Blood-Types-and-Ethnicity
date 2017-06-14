@@ -28,7 +28,6 @@ public class BOOGIEFormat
 			if(!compare.contains("REF")) {
 				// delete irrelevant information
 				compare = compare.replaceAll("[.,+,db_xref,dbnsp:]", "");
-				compare = compare.replace("CGI", "");
 				compare = compare.replace("ch", "chr");
 				compare = compare.replace(" ", "");
 				// divide and split sections
@@ -38,7 +37,7 @@ public class BOOGIEFormat
 				// assign chromosome number
 				data.put("chr#", dataTemp[0]);
 				// remove irrelevant text from alleles
-				String alleleInfo = dataTemp[4].replace("alll", "");
+				String alleleInfo = dataTemp[5].replace("alll", "");
 				// assign zygosity
 				if (alleleInfo.contains("/")) {
 					data.put("zygosity", "het");
@@ -54,10 +53,11 @@ public class BOOGIEFormat
 				}
 				
 				// assign coord1 & coord2, fix off bases
-				int coord1Loc = new Integer(dataTemp[2]);
+				//System.out.println("data: " + Arrays.toString(dataTemp));
+				int coord1Loc = new Integer(dataTemp[3]);
 				coord1Loc -= 1;
 				data.put("coord1", Integer.toString(coord1Loc));
-				int coord2Loc = new Integer(dataTemp[3]);
+				int coord2Loc = new Integer(dataTemp[4]);
 				coord2Loc -= 1;
 				data.put("coord2", Integer.toString(coord2Loc));
 
