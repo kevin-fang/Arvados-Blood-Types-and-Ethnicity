@@ -22,7 +22,6 @@ public class BOOGIEFormat
 		}
 
 		while (sc.hasNextLine()) {
-			HashMap<String, String> data = new HashMap<String, String>();
 			compare = sc.nextLine();
 			// makes sure that it's only working with mutations
 			if(!compare.contains("REF")) {
@@ -35,47 +34,47 @@ public class BOOGIEFormat
 				String[] dataTemp = compare.split(";");
 
 				// assign chromosome number
-				data.put("chr#", dataTemp[0]);
+				String chrNum = dataTemp[0];
 				// remove irrelevant text from alleles
 				String alleleInfo = dataTemp[5].replace("alll", "");
 				// assign zygosity
+				String zygosity;
 				if (alleleInfo.contains("/")) {
-					data.put("zygosity", "het");
+					zygosity = "het";
 				} else {
-					data.put("zygosity", "hom");
+					zygosity = "hom";
 				}
+				String refallele = "-";
 
 				// assign refallele
 				for (int i = 4; i < dataTemp.length; i++) {
 					if (dataTemp[i].contains("alll")) {
-					data.put("refallele", dataTemp[i].replace("alll", ""));
+						refallele = dataTemp[i].replace("alll", "");
 					}
 				}
 				
 				// assign coord1 & coord2, fix off bases
 				//System.out.println("data: " + Arrays.toString(dataTemp));
-				int coord1Loc = new Integer(dataTemp[3]);
-				coord1Loc -= 1;
-				data.put("coord1", Integer.toString(coord1Loc));
-				int coord2Loc = new Integer(dataTemp[4]);
-				coord2Loc -= 1;
-				data.put("coord2", Integer.toString(coord2Loc));
+				int coord1 = new Integer(dataTemp[3]);
+				coord1 -= 1;
+				int coord2 = new Integer(dataTemp[4]);
+				coord2 -= 1;
 
-				if (coord2Loc < coord1Loc) {
-					data.put("coord2", Integer.toString(coord1Loc));
+				if (coord2 < coord1) {
+					coord2 = coord1;
 				}
 
 				// assign allele and print out info, filter out homozygous in the process
-				if (data.get("zygosity").equals("het")) {
-					alleleInfo = alleleInfo.replace(data.get("refallele"), "");
+				if (zygosity.equals("het")) {
+					alleleInfo = alleleInfo.replace(refallele, "");
 					alleleInfo = alleleInfo.replace("/", "");
 					// String[] hetAlleles = alleleInfo.split("/");
 				}
-				data.put("allele", alleleInfo);
+				String allele = alleleInfo;
 
 				// create string to print out and remove carriage return
-				String add = (data.get("chr#") + " " + data.get("coord1") + " " + data.get("coord2") + " " 
-					+ data.get("refallele") + " " + data.get("allele") + " " + data.get("zygosity") + "\n");
+				String add = (chrNum + " " + coord1 + " " + coord2 + " "
+					+ refallele + " " + allele + " " + zygosity + "\n");
 				add = add.replaceAll("\\r", "");
 				System.out.print(add);			
 			}
