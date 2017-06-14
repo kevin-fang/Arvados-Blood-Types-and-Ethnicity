@@ -2,7 +2,6 @@ import java.io.*;
 import java.lang.String;
 import java.util.zip.GZIPInputStream;
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 public class BOOGIEFormatBetter
 {
@@ -10,7 +9,6 @@ public class BOOGIEFormatBetter
 
 		GZIPInputStream gzip = new GZIPInputStream(new FileInputStream(args[0]));
 		BufferedReader br = new BufferedReader(new InputStreamReader(gzip));
-		final long startTime = System.currentTimeMillis();
 
 		// format should be: chr# coord1 coord2 nucleotide1 nucleotide2 hom/het in BOOGIE file
 		// preformat is : ch# cgh ref/snp/indel coord1 coord2 . + . alleles g/ref allele
@@ -22,9 +20,6 @@ public class BOOGIEFormatBetter
 		while(compare.substring(0, 1).equals("#")) {
 			compare = br.readLine();
 		}
-
-		Pattern deleteExtra = Pattern.compile("[.,+,db_xref,dbnsp:]");
-		Pattern deleteWhiteSpace = Pattern.compile("\\s+");
 		while (compare != null) {
 			// makes sure that it's only working with mutations
 			if(!compare.contains("REF")) {
@@ -35,12 +30,12 @@ public class BOOGIEFormatBetter
         String coord2;
         String allele;
 				// delete irrelevant information
-				compare = deleteExtra.matcher(compare).replaceAll("");
+				compare = compare.replaceAll("[.,+,db_xref,dbnsp:]", "");
 				compare = compare.replace("CGI", "");
 				compare = compare.replace("ch", "chr");
 				compare = compare.replace(" ", "");
 				// divide and split sections
-				compare = deleteWhiteSpace.matcher(compare).replaceAll(";");
+				compare = compare.replaceAll("\\s+", ";");
 				String[] dataTemp = compare.split(";");
 
 				// assign chromosome number
@@ -89,8 +84,6 @@ public class BOOGIEFormatBetter
 			}
 			compare = br.readLine();
 			}
-		final long endTime = System.currentTimeMillis();
 		br.close();
-		System.out.println("Total execution time: " + (endTime - startTime) );
 	}
 }
