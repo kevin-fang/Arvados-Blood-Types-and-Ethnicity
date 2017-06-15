@@ -1,4 +1,0 @@
-gz_file:
- class: File
- path: hu011c57.gff.gz
-
