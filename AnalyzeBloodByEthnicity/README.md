@@ -17,6 +17,7 @@ To create formatted tables from your raw data, read the following:
 Run `python AnalyzeByBloodTypePGP.py` and it will read from the CSV file to check for blood types for each file in the `/173-HarvardPGP/` folder. If the survey blood type data is unavailable, use the BOOGIE predictions from Arvados. Sample input and output:  
 `python AnalyzeByBloodTypePGP.py`
 
+```
 American Indian / Alaska Native, White:
 A: 5     B: 0    AB: 0   O: 5  
 Hispanic or Latino, White:  
@@ -33,12 +34,14 @@ White:
 A: 62    B: 20   AB: 4   O: 59  
 American Indian / Alaska Native, Hispanic or Latino, White:  
 A: 2     B: 0    AB: 0   O: 0
+```
 
 ### For 433 Genomes from the 1000 Genomes Project:
 
 Navigate to `/433-1000Genomes/` and run `python AnalyzeByBloodType1000Genomes.py` and it will print out the results from the Arvados BOOGIE predictions, nicely formatted. Sample input and output:  
 `python AnalyzeByBloodType1000Genomes.py`
 
+```
 Utah residents with Northern and Western European ancestry:  
 44      8       2       42  
 Puerto Rican in Puerto Rico:  
@@ -54,4 +57,5 @@ Yoruba in Ibadan, Nigeria:
 Kinh in Ho Chi Minh City, Vietnam:  
 0       1       0       2  
 Peruvian in Lima, Peru:  
-17      3       0       74  
+17      3       0       74 
+``` 
