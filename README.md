@@ -1,4 +1,4 @@
-# Blood Type Phenotype/Genotype data by Ethnicity w/Arvados
+# Blood Type Analysis by Ethnicity with Arvados
 
 Created by Kevin Fang at Curoverse in 2016.   
 This GitHub repo contains the code used to read a blood type from a genome in compressed or uncompressed GFF form and the python scripts for checking accuracy and comparing it with ethnicity data provided in surveys from the Personal Genome Project and the 1000 Genome Project. It does not contain BOOGIE, the Java program used to guess the blood type, only the translator.
